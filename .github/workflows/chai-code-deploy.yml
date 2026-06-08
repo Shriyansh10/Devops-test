@@ -36,10 +36,11 @@ jobs:
           username: ubuntu
           key: ${{ secrets.EXCLOUD_SSH_KEY }}
           script: |
-            export NVM_DIR="$HOME/.nvm"
-            [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-
-            cd /home/ubuntu/Devops-test
-            git pull origin main
-            npm install
-            pm2 restart 0
+            # Stop and remove existing container
+            docker rm -f devops-test || true
+            # Pull the latest image
+            docker pull shriyanshagarwaldev/devops-test
+            # Run the new container -d -p 3000:3000 shriyanshagarwaldev/devops-test
+            docker run -d -p 3000:3000 shriyanshagarwaldev/devops-test
+            # Clean up old images
+            docker image prune -f
