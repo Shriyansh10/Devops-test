@@ -37,10 +37,10 @@ jobs:
           key: ${{ secrets.EXCLOUD_SSH_KEY }}
           script: |
             # Stop and remove existing container
-            docker rm -f devops-test || true
+            sudo docker rm -f devops-test || true
             # Pull the latest image
-            docker pull shriyanshagarwaldev/devops-test
+            sudo docker pull shriyanshagarwaldev/devops-test
             # Run the new container -d -p 3000:3000 shriyanshagarwaldev/devops-test
-            docker run -d -p 3000:3000 shriyanshagarwaldev/devops-test
+            sudo docker run -d -p 3000:3000 shriyanshagarwaldev/devops-test
             # Clean up old images
-            docker image prune -f
+            sudo docker image prune -f
