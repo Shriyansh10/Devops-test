@@ -4,7 +4,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 app.get("/", (req, res) => {
-  res.json({ message: "Server is running v4" });
+  res.json({ message: "Server is running v5", owner: "Shriyansh Agarwal"});
 });
 
 app.get("/health", (req, res) => {
