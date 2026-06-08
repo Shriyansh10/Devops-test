@@ -1,0 +1,28 @@
+name: Chai Code Deploy Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs: 
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Deploy on ExCloud
+        uses: appleboy/excloud-deploy@v1
+        with:
+          host: 210.79.128.118
+          username: ubuntu
+          key: ${{ secrets.EXCLOUD_SSH_KEY }}
+          script: |
+            cd /home/ubuntu/Devops-test
+            git pull origin main
+            npm install
+            pm2 restart 0
+
+      
