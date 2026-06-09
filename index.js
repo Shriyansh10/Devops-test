@@ -15,6 +15,11 @@ app.get("/health", (req, res) => {
   });
 });
 
+app.post("/data", (req, res) => {
+    res.json({ message: "Data received successfully" });
+    console.log(req.body);
+});
+
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
 });
