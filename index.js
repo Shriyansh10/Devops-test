@@ -4,7 +4,10 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 app.get("/", (req, res) => {
-  res.json({ message: "Server is running v5", owner: "Shriyansh Agarwal"});
+  res.json({
+    message: "Server is running v6 (post added)",
+    owner: "Shriyansh Agarwal",
+  });
 });
 
 app.get("/health", (req, res) => {
@@ -16,8 +19,8 @@ app.get("/health", (req, res) => {
 });
 
 app.post("/data", (req, res) => {
-    res.json({ message: "Data received successfully" });
-    console.log(req.body);
+  res.json({ message: "Data received successfully" });
+  console.log(req.body);
 });
 
 app.listen(port, () => {
