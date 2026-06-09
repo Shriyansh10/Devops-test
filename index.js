@@ -3,6 +3,8 @@ const express = require("express");
 const app = express();
 const port = process.env.PORT || 3000;
 
+app.use(express.json());
+
 app.get("/", (req, res) => {
   res.json({
     message: "Server is running v6 (post added)",
@@ -19,6 +21,7 @@ app.get("/health", (req, res) => {
 });
 
 app.post("/data", (req, res) => {
+    console.log("Received data:", req.body);
   res.json(req.body);
 });
 
