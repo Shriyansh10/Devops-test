@@ -7,7 +7,7 @@ app.use(express.json());
 
 app.get("/", (req, res) => {
   res.json({
-    message: "Server is running v6 (post added)",
+    message: "Server is running v7 (caddy added)",
     owner: "Shriyansh Agarwal",
   });
 });
