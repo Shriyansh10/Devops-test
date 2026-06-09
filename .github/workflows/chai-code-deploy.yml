@@ -42,6 +42,6 @@ jobs:
             # Pull the latest image
             sudo docker pull shriyanshagarwaldev/devops-test
             # Run the new container -d -name devops-test -p 80:3000 shriyanshagarwaldev/devops-test
-            sudo docker run -d -name devops-test -p 80:3000 shriyanshagarwaldev/devops-test
+            sudo docker run -d --name devops-test -p 80:3000 shriyanshagarwaldev/devops-test
             # Clean up old images
             sudo docker image prune -f
