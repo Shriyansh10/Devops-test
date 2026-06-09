@@ -37,9 +37,6 @@ jobs:
           key: ${{ secrets.EXCLOUD_SSH_KEY }}
           script: |
 
-            #stop the existing containers
-            sudo docker compose down
-
             #cd /home/ubuntu/Devops-test
             cd /home/ubuntu/Devops-test
 
@@ -51,6 +48,6 @@ jobs:
 
             #docker compose up -d
             sudo docker compose up -d
-            
+
             # clear old images
             sudo docker image prune -f
