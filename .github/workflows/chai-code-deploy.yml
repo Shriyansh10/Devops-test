@@ -36,12 +36,21 @@ jobs:
           username: ubuntu
           key: ${{ secrets.EXCLOUD_SSH_KEY }}
           script: |
-            # Stop and remove existing container
-            sudo docker stop devops-test || true
-            sudo docker rm -f devops-test || true
-            # Pull the latest image
+
+            #stop the existing containers
+            sudo docker compose down
+
+            #cd /home/ubuntu/Devops-test
+            cd /home/ubuntu/Devops-test
+
+            #git pull origin main
+            git pull origin main
+
+            #pull a fresh copy of shriyanshagarwaldev/devops-test
             sudo docker pull shriyanshagarwaldev/devops-test
-            # Run the new container -d -name devops-test -p 80:3000 shriyanshagarwaldev/devops-test
-            sudo docker run -d --name devops-test -p 80:3000 shriyanshagarwaldev/devops-test
-            # Clean up old images
+
+            #docker compose up -d
+            sudo docker compose up -d
+            
+            # clear old images
             sudo docker image prune -f
